@@ -58,6 +58,7 @@ function NewAnalyticsReport({data,selectedGraph}) {
             <th scope="col">INCORRECT</th>
             <th scope="col">SKIPPED</th>
             <th scope="col">MARKS OBTAINED</th>
+            <th scope="col">MARKS Percentage</th>
             
           </tr>
         </thead>
@@ -134,6 +135,7 @@ function NewAnalyticsReport({data,selectedGraph}) {
                 <td >{item.techincorrect}</td>
                 <td >{item.TechSkipped}</td>
                 <td >{item.Tech}</td>
+                <td >{item.Tech_Prec}</td>
                 
               
                 </tr>

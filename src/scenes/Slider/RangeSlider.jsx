@@ -1,40 +1,62 @@
 import React from 'react';
 import './Slider.css';
 
-function formatDate(dateString) {
-  const dateObj = new Date(dateString);
-  
-  const day = String(dateObj.getDate()).padStart(2, '0');
-  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-  const year = dateObj.getFullYear();
-  
-  return `${day}/${month}/${year}`;
-}
-
 const RangeSlider = ({ data }) => {
-  console.log("data::::::::::", data)
-  const dataArray = Object.entries(data);
-  console.log("slider::::::::::", dataArray)
-  
-  if (dataArray.length === 0) {
-    return null; // Return null if dataArray is empty
-  }
+  const formatDate = (dateString) => {
+    const options = {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    };
+    return new Date(dateString).toLocaleString(undefined, options);
+  };
 
-  const [key, value] = dataArray[16]; // Access the 15th entry of dataArray
-  const formattedDate = formatDate(value); // Format the date value
+  const formatPercentage = (percentage) => {
+    return parseFloat(percentage).toFixed(2);
+  };
 
   return (
-    <div className="container">
-      <div key={key}>
-        <h6>{key}: {formattedDate}</h6>
-        <div className="form-group" style={{ width: '100%', height: 'auto' }}>
-          <label htmlFor="rangeSlider">Technical</label>
-          <input type="range" className="form-control-range" id="rangeSlider" value={70} /><br />
-          <label htmlFor="rangeSlider">Apptitude</label>
-          <input type="range" className="form-control-range" id="rangeSlider" value={30} /><br />
-          <label htmlFor="rangeSlider">Communication</label>
-          <input type="range" className="form-control-range" id="rangeSlider" value={50} />
+    <div className="container mx-auto my-auto py-2 px-2 bg-[#E7F1FA]">
+      <div className="form-group " style={{ width: '100%', height: 'auto' ,fontFamily: 'Poppins'}}>
+        <span className="font-bold" style={{ fontWeight: "bold" }}>Date: {formatDate(data.Date)}</span>
+      
+        <label htmlFor={`rangeSlider-${data.id}-1`} style={{ marginTop: "10px" }}>Technical</label>
+        <div style={{color:"green"}}>
+        <input
+          type="range"
+          className="form-control-range "
+          id={`rangeSlider-${data.id}-1`}
+          value={data.Tech_Prec}
+          max={100}
+        
+          title={`${formatPercentage(data.Tech_Prec)}%`}
+        />
         </div>
+        <span style={{ fontWeight: "bold", float: "right" }}>
+         
+          { data.Tech_Prec &&  formatPercentage(data?.Tech_Prec)}%</span>
+
+        <label htmlFor={`rangeSlider-${data.id}-2`}>Aptitude</label>
+        <input
+          type="range"
+          className="form-control-range"
+          id={`rangeSlider-${data.id}-2`}
+          value={data.Apti_Prec}
+          max={100}
+          title={`${formatPercentage(data.Apti_Prec)}%`}
+        />
+        <span style={{ fontWeight: "bold", float: "right" }}>{formatPercentage(data.Apti_Prec)}%</span>
+
+        <label htmlFor={`rangeSlider-${data.id}-3`}>English</label>
+        <input
+          type="range"
+          className="form-control-range"
+          id={`rangeSlider-${data.id}-3`}
+          value={data.English_Prec}
+          max={100}
+          title={`${formatPercentage(data.English_Prec)}%`}
+        ></input>
+        <span style={{ fontWeight: "bold", float: "right" }}>{formatPercentage(data.English_Prec)}%</span>
       </div>
     </div>
   );

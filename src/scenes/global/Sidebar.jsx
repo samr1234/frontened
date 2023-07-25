@@ -107,15 +107,11 @@ const Sidebar = () => {
                   alignItems="center"
                   ml="15px"
                 >
-                  <h3
-                    style={{
-                      backgroundImage: "linear-gradient( #008000, #00FF00)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Hoping Minds
-                  </h3>
+                  <img
+                      src="https://hopingminds.com/wp-content/uploads/2023/01/Asset-5.png"
+                      alt="Hoping Minds"
+                      className="logo mt-4 mb-3" style={{ height: "45px", width: "130px" }}
+                    />
 
                   <Typography variant="h3"></Typography>
                   <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -136,13 +132,14 @@ const Sidebar = () => {
                   justifyContent="center"
                   alignItems="center"
                 ></Box>
-                <Box textAlign="center">
+                <Box textAlign="center" className="mt-3">
                   <Typography
                     variant="h2"
                     fontWeight="bold"
                     sx={{ m: "10px 0 0 0" }}
                     fontSize={"20px"}
-                    style={{ color: "rgb(120, 144, 156)" }}
+                    style={{ color: "rgb(120, 144, 156)",fontFamily: 'Poppins' }}
+                    
                   >
                     {data1?.studentId?.name}
                   </Typography>

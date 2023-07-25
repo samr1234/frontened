@@ -4,43 +4,50 @@ import './Range-slider.css';
 import RangeSlider from '../Slider/RangeSlider';
 
 const MyCarousel = () => {
-  const [data1, setData1] = useState([]);
+  const [testData, setTestData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/getSingleData");
+      setTestData(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = 'http://localhost:3001/getSingleData';
-        const response = await axios.get(url);
-        const data = response.data;
-        console.log("testshare", data);
-        setData1(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
 
   return (
     <div id="carouselExampleControls" className="carousel carousel-dark slide" data-bs-ride="carousel">
       <div className="carousel-inner">
-        {data1.map((data, index) => (
-          <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-            <div className="card-wrapper container-sm d-flex justify-content-around">
-              <div className="card" style={{ width: '16rem', height: '13rem', padding: '1rem', marginRight: '1rem' }}>
-                <RangeSlider data={data} />
+        {loading ? (
+          <div className="carousel-item active">
+            <div>Loading...</div>
+          </div>
+        ) : (
+          testData.map((data, index) => (
+            <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+              <div className="card-wrapper container-sm d-flex ">
+                <div className="card mx-auto h-full w-96 pt-10" >
+                  <RangeSlider data={data} />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
-
-      <button className="carousel-control-prev custom-prev-btn" style={{ backgroundColor: 'gray', color: 'white' }} type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span className="visually-hidden">Previous</span>
+     
+      <button className="carousel-control-prev my-10 mx-[-8rem] w-32" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span className="text-green-300"></span>
       </button>
-      <button className="carousel-control-next custom-next-btn" style={{ backgroundColor: 'gray', color: 'white' }} type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span className="visually-hidden">Next</span>
+ 
+      <button className="carousel-control-next my-10 mx-[-8rem] w-32" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span className="visually-hidden"></span>
       </button>
     </div>
   );

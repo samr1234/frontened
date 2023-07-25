@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.heading{
+    margin-top: 5rem;
+    text-align: center;
+    width: 100%;
+      height: auto;
+      /* background-color: #f1ebeb; */
+      border-radius: 10px;
+      
+}
+
+  .mainClass {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 40px;
+    padding-top: 1px;
+  }
+  
+  .SELECT {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .SELECT label {
+    margin-right: 5px;
+    white-space: nowrap;
+  }
+  
+  .SELECT select {
+    margin-right: 5px;
+  }
+  
+  .SELECT label:last-child {
+    margin-right: 0;
+  }
+  .table-container {
+    max-height: 300px; /* Adjust the desired height */
+    overflow-y: auto;
+    
+  }
+
+  /* graph */
+  .container1 {
+    display: flex;
+  }
+  
+  .left {
+    flex: 1;
+    /* background-color: #f8f1f1; */
+    padding: 20px;
+  }
+  
+  .right {
+    flex: 1;
+    /* background-color: #f2eeee; */
+    padding: 20px;
+  }
+  

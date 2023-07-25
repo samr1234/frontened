@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Slider */
+
+.slider-container {
+    margin-bottom: 20px;
+}
+
+input[type="range"] {
+    width: 200px;
+}
+
+span {
+    font-weight: bold;
+    margin-left: 10px;
+}
+.col{
+    height: 200px;
+}

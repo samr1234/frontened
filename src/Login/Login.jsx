@@ -1,24 +1,39 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Login.css";
-import {useState} from 'react'
+import { Navigate, Link, useParams } from "react-router-dom";
 import axios from 'axios'
+
+import { UserContext } from "../UserContext";
 const Login = () => {
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const [CRMID, setCRMID] = useState('');
+  const { loading, user, setUser } = useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
   const Login =async(e)=>{
 
     e.preventDefault();
-    const userInfo = await axios.post("/login",{
-      email,
-      password,
-    })
+    try{
+      const userInfo = await axios.post("/login",{
+        email,
+        CRMID,
+      })
+
+      setUser(userInfo)
+    } catch(error) {
+      console.error(error);
+    }
+    
 
   }
 
+  if (user) {
+    // Redirect the user to the login page
+    return <Navigate to={"/"} />;
+  }
 
 
+	
   const cardStyle = {
     borderRadius: "1rem",
   };
@@ -39,7 +54,8 @@ const Login = () => {
 
   return (
     <div>
-      <section className="vh-90">
+      {
+        !user &&   <section className="vh-90">
         <div className="container py-5 h-90">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
@@ -100,8 +116,8 @@ const Login = () => {
                             type="password"
                             id="form2Example27"
                             className="form-control "
-                            value={password}
-                            onChange={e=>setPassword(e.target.value)}
+                            value={CRMID}
+                            onChange={e=>setCRMID(e.target.value)}
                           />
                         </div>
                         <div className="pt-1 mb-2">
@@ -128,6 +144,8 @@ const Login = () => {
           </div>
         </div>
       </section>
+      }
+    
     </div>
   );
 };

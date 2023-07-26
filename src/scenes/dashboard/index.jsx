@@ -8,6 +8,8 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MyCarousel from "../global/Slider2";
 import { Tooltip } from "@mui/material";
+import Navigation from "../Nav/Navigation";
+import TopSection from "./TopSection";
 
 const Dashboard = () => {
   const [startIndex, setStartIndex] = useState(0);
@@ -23,7 +25,7 @@ const Dashboard = () => {
   const [latestDataDate, setLatestDataDate] = useState(null);
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/data");
+      const response = await axios.get("http://192.168.1.22:3000/data");
       const sortedNotifications = response.data.sort(
         (a, b) => new Date(a.date) - new Date(b.date)
       );
@@ -82,7 +84,7 @@ const Dashboard = () => {
   };
 
   const downloadPDF = async (filename) => {
-    const fileURL = `http://localhost:3000/uploads/${filename}`;
+    const fileURL = `http://192.168.1.22:3000/uploads/${filename}`;
 
     try {
       const response = await axios.get(fileURL, {
@@ -102,7 +104,7 @@ const Dashboard = () => {
   };
 
   const openPDF = (filename) => {
-    window.open(`http://localhost:3000/uploads/${filename}`, "_blank");
+    window.open(`http://192.168.1.22:3000/uploads/${filename}`, "_blank");
   };
 
   const showNextNotifications = () => {
@@ -132,184 +134,103 @@ const Dashboard = () => {
       .replace(/(\d+:\d+)(\s\w+)/, "$1$2");
   };
 
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleHover = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
   return (
-    <div className="content min-w-screen" style={{ backgroundColor: "white" }}>
+    <div className=" w-full" style={{ backgroundColor: "white" }}>
       <div className="col main pt-5 mt-3 container">
-        <p className="lead d-none d-sm-block">Welcome to your Dashboard</p>
+        <p className="lead d-none d-sm-block ">Welcome to your Dashboard</p>
+        {/* <Navigation /> */}
         <p className="flex flex-row-reverse text-2xl mr-5 my-2 font-bold">
           {formatCustomDate(latestDataDate)}
         </p>
 
-        <div className="lg:text-lg sm:grid grid-cols-4 pb-3 mb-3 text-sm sm:w-full">
-          <div className="mr-3 pb-3">
-            <div className="card text-white h-100 ">
-              <div
-                className="card-body bg-success rounded"
-                style={{
-                  background: "linear-gradient(to right, #1cbf4b, #0c8f2c)",
-                }}
-              >
-                <div className="rotate">
-                  <i className="fa fa-code fa-4x"></i>
-                </div>
-                <h6 className="text-uppercase">Classes Attended</h6>
-                <h1
-                  className="display-4 cursor-pointer"
-                  onMouseOver={handleHover}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {data1.length > 0
-                    ? isHovered
-                      ? `${data1[0].ClassesAttend}/${data1[0].TotalAttend}`
-                      : data1[0].ClassesAttend
-                    : 0}
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div className="mr-3 pb-3">
-            <div className="card text-white h-100">
-              <div
-                className="card-body bg-info rounded"
-                style={{
-                  background: "linear-gradient( to right, #FFA500, #FF6347)",
-                }}
-              >
-                <div className="rotate">
-                  <i className="fa fa-cubes fa-4x" aria-hidden="true"></i>
-                </div>
-                <h6 className="text-uppercase">Rank</h6>
-                <h1 className="display-4">
-                  {data1.length > 0 ? data1[0].Rank : 0}
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div className="mr-3 pb-3">
-            <div className="card text-white h-100">
-              <div
-                className="card-body bg-info rounded"
-                style={{
-                  background: "linear-gradient( to right, #FFA500, #FF6347)",
-                }}
-              >
-                <div className="rotate">
-                  <i className="fa fa-cubes fa-4x" aria-hidden="true"></i>
-                </div>
-                <h6 className="text-uppercase">Test Attempted</h6>
-                <h1 className="display-4">{data1.length > 0 ? `x` : 0}</h1>
-              </div>
-            </div>
-          </div>
-          <div className="mr-3 pb-3">
-            <div className="card text-white h-100">
-              <div
-                className="card-body bg-info rounded"
-                style={{
-                  background: "linear-gradient(to right, #007bff, #090979)",
-                }}
-              >
-                <div className="rotate">
-                  <i className="fa fa-info fa-4x" aria-hidden="true"></i>
-                </div>
-                <h6 className="text-uppercase">Batch Name</h6>
-                <h2 className="display-4">
-                  {data1.length > 0 ? data1[0].studentId.batch : 0}
-                </h2>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TopSection data1={data1}/>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <div className="w-full mb-6">
-    <div className="card w-full">
-      <div className="card-header">
-        <h2>
-          <i className="fa fa-hand-pointer-o" aria-hidden="true"></i> Test Information
-        </h2>
-      </div>
-      <div className="card-body">
-        <div className="carousel-wrapper">
-          <MyCarousel />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div className="w-full">
-    <div className="w-full card mr-6 overflow-hidden">
-      <div className="card-header">
-        <h2>
-          <IconButton
-            onClick={handleNotificationPopoverOpen(null)}
-            color="inherit"
-            aria-label="notifications"
-          >
-            <Badge badgeContent={newNotificationCount} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          Notifications
-        </h2>
-      </div>
-      <div className="card-body">
-        <div className="list-group">
-          {currentNotifications.map((notification, index) => (
-            <div
-              className="list-group-item list-group-item-action flex-column align-items-start"
-              key={index}
-            >
-              <div className="d-flex w-full justify-between">
-                <h5 className="mb-1">{notification.originalname}</h5>
-                <small>{formatDate(notification.createdAt)}</small>
+          <div className="w-full mb-6">
+            <div className="card w-full">
+              <div className="card-header">
+                <h2>
+                  <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>{" "}
+                  Test Information
+                </h2>
               </div>
-              <p className="mb-1">{notification.description}</p>
-              <small>Company: {notification.companyName}</small>
-
-              <div className="d-flex mt-2">
-                <IconButton
-                  onClick={() => downloadPDF(notification.filename)}
-                  style={{ color: "red" }}
-                >
-                  <CloudDownloadIcon />
-                </IconButton>
-                <IconButton
-                  onClick={() => openPDF(notification.filename)}
-                  style={{ color: "blue" }}
-                >
-                  <VisibilityIcon />
-                </IconButton>
+              <div className="card-body">
+                <div className="carousel-wrapper">
+                  <MyCarousel />
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-        <div className="pagination-buttons">
-          {startIndex > 0 && (
-            <IconButton onClick={showPreviousNotifications} style={{ color: "blue" }}>
-              <NavigateBeforeIcon />
-            </IconButton>
-          )}
-          {startIndex + notificationsPerPage < notifications.length && (
-            <IconButton onClick={showNextNotifications} style={{ color: "blue" }}>
-              <NavigateNextIcon />
-            </IconButton>
-          )}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+          </div>
 
+          <div className="w-full">
+            <div className="w-full card mr-6 overflow-hidden">
+              <div className="card-header">
+                <h2 className="text-2xl">
+                  <IconButton
+                    onClick={handleNotificationPopoverOpen(null)}
+                    color="inherit"
+                    aria-label="notifications"
+                  >
+                    <Badge badgeContent={newNotificationCount} color="error">
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+                  Placement Drives
+                </h2>
+              </div>
+              <div className="card-body">
+                <div className="list-group">
+                  {currentNotifications.map((notification, index) => (
+                    <div
+                      className="list-group-item list-group-item-action flex-column align-items-start"
+                      key={index}
+                    >
+                      <div className="d-flex w-full justify-between">
+                        <h5 className="mb-1">{notification.originalname}</h5>
+                        <small>{formatDate(notification.createdAt)}</small>
+                      </div>
+                      <p className="mb-1">{notification.description}</p>
+                      <small>Company: {notification.companyName}</small>
+
+                      <div className="d-flex mt-2">
+                        <IconButton
+                          onClick={() => downloadPDF(notification.filename)}
+                          style={{ color: "red" }}
+                        >
+                          <CloudDownloadIcon />
+                        </IconButton>
+                        <IconButton
+                          onClick={() => openPDF(notification.filename)}
+                          style={{ color: "blue" }}
+                        >
+                          <VisibilityIcon />
+                        </IconButton>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="pagination-buttons">
+                  {startIndex > 0 && (
+                    <IconButton
+                      onClick={showPreviousNotifications}
+                      style={{ color: "blue" }}
+                    >
+                      <NavigateBeforeIcon />
+                    </IconButton>
+                  )}
+                  {startIndex + notificationsPerPage < notifications.length && (
+                    <IconButton
+                      onClick={showNextNotifications}
+                      style={{ color: "blue" }}
+                    >
+                      <NavigateNextIcon />
+                    </IconButton>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Popover
         open={Boolean(notificationPopoverAnchor)}

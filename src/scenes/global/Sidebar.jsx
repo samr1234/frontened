@@ -47,7 +47,7 @@ const Sidebar = () => {
   }
     fetchData();
   }, []);
-  console.log("data from side bar::::",data1?.studentId?.name);
+  // console.log("data from side bar::::",data1?.studentId?.name);
   
   // console.log("studentId from side bar::::",studentId);
   const location = useLocation();
@@ -138,7 +138,7 @@ const Sidebar = () => {
                     fontWeight="bold"
                     sx={{ m: "10px 0 0 0" }}
                     fontSize={"20px"}
-                    style={{ color: "rgb(120, 144, 156)",fontFamily: 'Poppins' }}
+                    style={{ color: "rgb(120, 144, 156)",fontFamily: 'sans-serif' }}
                     
                   >
                     {data1?.studentId?.name}

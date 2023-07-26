@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Range-slider.css';
 import RangeSlider from '../Slider/RangeSlider';
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+
 
 const MyCarousel = () => {
   const [testData, setTestData] = useState([]);
@@ -42,12 +45,12 @@ const MyCarousel = () => {
         )}
       </div>
      
-      <button className="carousel-control-prev my-10 mx-[-8rem] w-32" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span className="text-green-300"></span>
+      <button className="carousel-control-prev my-10 mx-[-2rem] w-32" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span className="text-green-300"><NavigateBeforeIcon style={{fontSize:'3rem'}}/></span>
       </button>
  
-      <button className="carousel-control-next my-10 mx-[-8rem] w-32" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span className="visually-hidden"></span>
+      <button className="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span className="text-green-300" > <NavigateNextIcon style={{fontSize:'3rem'}}/></span>
       </button>
     </div>
   );

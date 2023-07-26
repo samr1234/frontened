@@ -85,7 +85,7 @@ const Total = () => {
   };
 
   return (
-    <div className='graph' style={{ width: '100%', maxWidth: '500px', height: '400px', margin: '60px auto' }}>
+    <div className='graph' style={{ width: '100%', maxWidth: '500px', height: '280px', margin: '60px auto' }}>
       {data1.length > 0 ? (
         <Line data={getChartData()} options={options} />
       ) : (

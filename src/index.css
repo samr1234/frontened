@@ -17,10 +17,7 @@ body,
     margin-top: 0;
 }
 
-.app {
-    display: flex;
-    position: relative;
-}
+
 
 ::-webkit-scrollbar {
     width: 10px;

@@ -1,11 +1,10 @@
 import React, { useState ,useEffect} from 'react';
 import axios from 'axios'
-// import Pdp from './Pdp'
+
 
 function NewAnalyticsReport({data,selectedGraph}) {
 
   const [data1,setData1] = useState()
-  const [limit,setLimit] = useState(10)
   const [entriesPerPage, setEntriesPerPage] = useState(5);
 
   console.log("selectedGraph::: from new ",selectedGraph)
@@ -36,22 +35,18 @@ function NewAnalyticsReport({data,selectedGraph}) {
   console.log("data1:::",data1)
 
 
-  // const handleEntriesPerPageChange = (event) => {
   
-  //   setEntriesPerPage(parseInt(event.target.value, 10));
-  // };
 
   return (
-    <div className="mainClass container">
+    <div className="mainClass container ml-10">
 
     
 
-      <table className="table ">
+      <table className="table w-full text-xl">
         <thead>
           <tr className='text-sm'>
             <th scope="col">ATTEMPTED ON</th>
             <th scope="col">RANK</th>
-           
             <th scope="col">TOTAL TIME TAKEN</th>
             <th scope="col">TOTAL TIME</th>
             <th scope="col">CORRECT</th>
@@ -63,21 +58,16 @@ function NewAnalyticsReport({data,selectedGraph}) {
           </tr>
         </thead>
         <tbody className="hover:bg-red-400">
-        
-          
-          
-            {
-             
 
-             
+            {
+
              data.map(item => {
               const dateObject = new Date(item.Date);
               const formattedDate = dateObject.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
               return (
                 <>
-                {/* <th scope="column">{1}</th> */}
                 {
-                selectedGraph === "total" && 
+                selectedGraph === "Total" && 
                 <tr className="hover:bg-red-400">
                 <td >{formattedDate}</td>
                 <td >{item.Rank}</td>
@@ -87,13 +77,14 @@ function NewAnalyticsReport({data,selectedGraph}) {
                 <td >{item.Totalincorrect}</td>
                 <td >{item.Totalskipped}</td>
                 <td >{item.Total_Marks_obt}</td>
+                <td >{item.Overall_Prec.toFixed(2)}{" "}%</td>
                 
               
                 </tr>
                 
                   }
                 {
-                selectedGraph === "apti" && 
+                selectedGraph === "Apti" && 
                 <tr className="hover:bg-red-400">
                 <td >{formattedDate}</td>
                 <td >{item.Rank}</td>
@@ -103,13 +94,14 @@ function NewAnalyticsReport({data,selectedGraph}) {
                 <td >{item.Totalincorrect}</td>
                 <td >{item.AptiSkipped}</td>
                 <td >{item.Apti}</td>
+                <td >{item.Apti_Prec.toFixed(2)}{""}%</td>
                 
               
                 </tr>
                 
                   }
                 {
-                selectedGraph === "pdp" && 
+                selectedGraph === "Pdp" && 
                 <tr className="hover:bg-red-400">
                 <td >{formattedDate}</td>
                 <td >{item.Rank}</td>
@@ -125,8 +117,8 @@ function NewAnalyticsReport({data,selectedGraph}) {
                 
                   }
                 {
-                selectedGraph === "technical" && 
-                <tr className="hover:bg-red-400">
+                selectedGraph === "Technical" && 
+                <tr className="hover:bg-red-400 ">
                 <td >{formattedDate}</td>
                 <td >{item.Rank}</td>
                 <td >{item.Techtime}</td>
@@ -135,7 +127,7 @@ function NewAnalyticsReport({data,selectedGraph}) {
                 <td >{item.techincorrect}</td>
                 <td >{item.TechSkipped}</td>
                 <td >{item.Tech}</td>
-                <td >{item.Tech_Prec}</td>
+                <td >{item.Tech_Prec?.toFixed(2)}{" "}%</td>
                 
               
                 </tr>
@@ -152,11 +144,6 @@ function NewAnalyticsReport({data,selectedGraph}) {
          
         </tbody>
       </table>
-      {/* <div className="container1" style={{height:"800px"}}>
-        <div className="" >
-          <Pdp />
-        </div>
-      </div> */}
   </div>
   );
 }

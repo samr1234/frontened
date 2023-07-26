@@ -1,37 +1,36 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css'
-import Sidebar from "./scenes/global/Sidebar";
+
 import Dashboard from "./scenes/dashboard";
 import Analytics from "./scenes/analytics/Analytics";
 import Report from "./scenes/report/Report";
-import Navigation from './scenes/nav/Navigation';
+
 // import Register from "./auth/Register";
-
-
+import Login from './Login/Login.jsx'
+import Layout from './Layout'
 
 function App() {
-  const [isSidebar, setIsSidebar] = useState(true);
 
   return (
-        <div className="app min-w-screen">
-        <Navigation setIsSidebar={setIsSidebar} />
-          <Sidebar isSidebar={isSidebar} />
-          <main className="content">
-            <Routes>
-       
-              <Route path="/" element={<Dashboard />} />
+    <div className="app min-w-screen">
 
-          
-              <Route path='/analytics' element={<Analytics/>} />
-              <Route path="/report" element={<Report/>}/>
-            </Routes>
-          </main>
-          
-        </div>
-       
-     
-    
+
+
+
+      <Routes>
+          <Route path='/login' element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path='/analytics' element={<Analytics />} />
+          <Route path="/report" element={<Report />} />
+        </Route>
+      </Routes>
+
+    </div>
+
+
+
   );
 }
 

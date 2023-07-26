@@ -8,13 +8,16 @@ import NewAnalyticsReport from './NewAnalyticsReportTable';
 import Total from "./Total";
 
 const NewAnal = () => {
-  const [selectedGraph, setSelectedGraph] = useState("total");
+  const [selectedGraph, setSelectedGraph] = useState("Total");
   const [dates, setDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [data, setData] = useState([]);
 
 
   useEffect(() => {
+
+
+
     const fetchDates = async () => {
       try {
         const url = 'http://localhost:3001/getSingleData';
@@ -86,16 +89,16 @@ console.log("selected graph::::::",selectedGraph)
             {selectedGraph}
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item eventKey="total" active={selectedGraph === "total"}>
+            <Dropdown.Item eventKey="Total" active={selectedGraph === "Total"}>
               Total Marks
             </Dropdown.Item>
-            <Dropdown.Item eventKey="apti" active={selectedGraph === "apti"}>
+            <Dropdown.Item eventKey="Apti" active={selectedGraph === "Apti"}>
               Apti Marks
             </Dropdown.Item>
-            <Dropdown.Item eventKey="pdp" active={selectedGraph === "pdp"}>
+            <Dropdown.Item eventKey="Pdp" active={selectedGraph === "Pdp"}>
               Pdp Marks
             </Dropdown.Item>
-            <Dropdown.Item eventKey="technical" active={selectedGraph === "technical"}>
+            <Dropdown.Item eventKey="Technical" active={selectedGraph === "Technical"}>
              Technical Marks
             </Dropdown.Item>
           </Dropdown.Menu>
@@ -106,7 +109,7 @@ console.log("selected graph::::::",selectedGraph)
       
         <div>
          
-          {selectedGraph === "total" && (
+          {selectedGraph === "Total" &&(
             <div
               style={{
                 position: "relative",
@@ -120,7 +123,7 @@ console.log("selected graph::::::",selectedGraph)
               <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
             </div>
           )}
-          {selectedGraph === "apti" && (
+          {selectedGraph === "Apti" && (
             <div
               style={{
                 position: "relative",
@@ -135,7 +138,7 @@ console.log("selected graph::::::",selectedGraph)
           
             </div>
           )}
-          {selectedGraph === "pdp" && (
+          {selectedGraph === "Pdp" && (
             <div
               style={{
                 position: "relative",
@@ -150,7 +153,7 @@ console.log("selected graph::::::",selectedGraph)
           
             </div>
           )}
-          {selectedGraph === "technical" && (
+          {selectedGraph === "Technical" && (
             <div
               style={{
                 position: "relative",

@@ -1,0 +1,36 @@
+.btn1{
+    /* align-items: center; */
+     display: block;
+     width: 40%;
+     height: 50px;
+     border-radius: 25px;
+     outline: none;
+     border: none;
+     background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+     background-size: 200%;
+     font-size: 1.2rem;
+     color: #fff;
+     font-family: 'Poppins', sans-serif;
+     text-transform: uppercase;
+     margin: 1rem 0;
+     cursor: pointer;
+     transition: .5s;
+     transition: background-color 0.3s, transform 0.2s;
+ }
+ .btn1:hover{
+     background-color: #2980b9;
+     transform: scale(1.2);
+ }
+ 
+ 
+ @media screen and (max-width: 1050px){
+     .container{
+         grid-gap: 5rem;
+     }
+ }
+ 
+ @media screen and (max-width: 1000px){
+     form{
+         width: 290px;
+     }
+ }

@@ -14,7 +14,7 @@ function Navigation() {
 
   const handleNotificationsClick = async () => {
     try {
-      const response = await axios.get('http://192.168.1.22:5000/notifications');
+      const response = await axios.get('http://192.168.1.22:8000/notifications');
       const sortedNotifications = response.data.sort((a, b) => b.createdAt.localeCompare(a.createdAt)); // Sort in descending order
       setNotifications(sortedNotifications);
 

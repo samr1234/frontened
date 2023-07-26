@@ -4,7 +4,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import './Navigation.css'
+// import './Navigation.css'
 function Navigation() {
   const [notifications, setNotifications] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
@@ -69,7 +69,6 @@ function Navigation() {
         <div className="navbar-items">
           <div className="navbar-item" onClick={handleNotificationsClick}>
             <NotificationsIcon />
-            {/* Show notification count on the bell icon */}
             {notificationCount > 0 && <span className="notification-count">{notificationCount}</span>}
           </div>
         </div>

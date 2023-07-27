@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Typography } from "@mui/material";
 import MyCarousel from "../global/Slider2";
 import Navigation from "../Nav/Navigation";
 import TopSection from "./TopSection";
 import Notifications from "./Notifications";
-import Profile from "../Nav/Profile";
+
 
 const Dashboard = () => {
   const [data1, setData1] = useState([]);
   const [latestDataDate, setLatestDataDate] = useState(null);
+
+  const { loading, user, setUser } = useContext(UserContext);
+  console.log("user:::::", user);
 
   const fetchData1 = async () => {
     const url = "http://localhost:3001/getSingleData";
@@ -33,6 +36,12 @@ const Dashboard = () => {
   useEffect(() => {
     fetchData1();
   }, []);
+
+  // Check if the user is not logged in and loading is false
+  if (!user && !loading) {
+    // Redirect the user to the login page
+    return <Navigate to={"/login"} />;
+  }
 
   const formatCustomDate = (dateString) => {
     const options = {

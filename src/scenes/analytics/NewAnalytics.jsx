@@ -118,9 +118,10 @@ console.log("selected graph::::::",selectedGraph)
                 transform: "translateY(10%)",
               }}
             >
-              <div className="">
-              <Total />
+              <div className="grid grid-cols-2 gap-4">
               <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
+              <Total />
+
               </div>
             </div>
           )}

@@ -39,14 +39,14 @@ function NewAnalyticsReport({data,selectedGraph}) {
   
 
   return (
-    <div className="mainClass container ml-10">
+    <div className="mainClass container w-96">
 
     
 
-      <table className="table w-full text-xl">
+      <table className="table w-96 text-xl ">
         <thead>
           <tr className='text-sm'>
-            <th scope="col">ATTEMPTED ON</th>
+            <th scope="row">ATTEMPTED ON</th>
             <th scope="col">RANK</th>
             <th scope="col">TOTAL TIME TAKEN</th>
             <th scope="col">TOTAL TIME</th>

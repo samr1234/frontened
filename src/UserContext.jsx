@@ -13,6 +13,9 @@ export  function UserContextProvider({children}){
               })
             }
 
+            console.log(user)
+
+
       },[]);
  
     return (

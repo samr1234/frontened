@@ -11,10 +11,10 @@ const Analytics = () => {
   const { loading, user, setUser } = useContext(UserContext);
 
 
-  // if (!user && !loading) {
-  //   // Redirect the user to the login page
-  //   return <Navigate to={"/login"} />;
-  // }
+  if (!user && !loading) {
+    // Redirect the user to the login page
+    return <Navigate to={"/login"} />;
+  }
   return (
     <>
 

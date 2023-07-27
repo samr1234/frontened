@@ -38,10 +38,10 @@ const Dashboard = () => {
   }, []);
 
   // Check if the user is not logged in and loading is false
-  // if (!user && !loading) {
-  //   // Redirect the user to the login page
-  //   return <Navigate to={"/login"} />;
-  // }
+  if (!user && !loading) {
+    // Redirect the user to the login page
+    return <Navigate to={"/login"} />;
+  }
 
   const formatCustomDate = (dateString) => {
     const options = {

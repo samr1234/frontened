@@ -5,12 +5,11 @@ import MyCarousel from "../global/Slider2";
 import Navigation from "../Nav/Navigation";
 import TopSection from "./TopSection";
 import Notifications from "./Notifications";
-import { Navigate, Link, useParams } from "react-router-dom";
-import { UserContext } from "../../UserContext.jsx";
+
 const Dashboard = () => {
   const [data1, setData1] = useState([]);
   const [latestDataDate, setLatestDataDate] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(true)
   const { loading, user, setUser } = useContext(UserContext);
   console.log("user:::::", user);
 
@@ -28,6 +27,7 @@ const Dashboard = () => {
       if (sortedData.length > 0) {
         setLatestDataDate(sortedData[0].Date);
       }
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +38,7 @@ const Dashboard = () => {
   }, []);
 
   // Check if the user is not logged in and loading is false
-  if (!user && !loading) {
+  if (!user && !loading && !isLoading) {
     // Redirect the user to the login page
     return <Navigate to={"/login"} />;
   }
@@ -54,6 +54,7 @@ const Dashboard = () => {
       .replace(/(\d+:\d+)(\s\w+)/, "$1$2");
   };
 
+
   return (
     <div className="w-full" style={{ backgroundColor: "white" }}>
       <div className="col main pt-5 mt-3 container px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
@@ -62,6 +63,7 @@ const Dashboard = () => {
           <Navigation />
         
         </div>
+
         <p className="flex flex-row-reverse text-2xl mr-5 my-2 font-bold">
           {formatCustomDate(latestDataDate)}
         </p>
@@ -79,7 +81,7 @@ const Dashboard = () => {
               </div>
               <div className="card-body">
                 <div className="carousel-wrapper">
-                  <MyCarousel />
+                  <MyCarousel isLoading={isLoading}/>
                 </div>
               </div>
             </div>

@@ -1,8 +1,6 @@
 import React, { useState ,useEffect} from 'react';
 import axios from 'axios'
 
-
-
 function NewAnalyticsReport({data,selectedGraph}) {
 
   const [data1,setData1] = useState()

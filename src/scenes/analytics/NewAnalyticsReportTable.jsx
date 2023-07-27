@@ -2,6 +2,7 @@ import React, { useState ,useEffect} from 'react';
 import axios from 'axios'
 
 
+
 function NewAnalyticsReport({data,selectedGraph}) {
 
   const [data1,setData1] = useState()
@@ -144,6 +145,7 @@ function NewAnalyticsReport({data,selectedGraph}) {
          
         </tbody>
       </table>
+      {/* <Leaderboard/> */}
   </div>
   );
 }

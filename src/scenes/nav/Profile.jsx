@@ -1,49 +1,61 @@
-import React, { useState } from "react";
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import React, { useState } from 'react';
+import ProfileIcon from '@mui/icons-material/AccountCircle'; // Replace 'Profile' with the correct icon name
+import Popover from '@mui/material/Popover';
+import Button from '@mui/material/Button';
 
-const Profile = ({ onLogout, onChangePassword }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Profile = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleLogout = () => {
-    onLogout();
-    setIsOpen(false);
+    // Implement your logout logic here
+    // For example, you can call an API to logout the user and then handle the logout action
+    // After that, close the popover
+    handleClose();
   };
 
-  const handleChangePassword = () => {
-    onChangePassword();
-    setIsOpen(false);
-  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'profile-popover' : undefined;
 
   return (
-    <div className="relative">
-      <button
-        className=" hover:bg-grey text-white font-bold py-2 px-6 rounded flex items-center"
-        onClick={() => setIsOpen(!isOpen)}
+    <div>
+      <div onClick={handleOpen} style={{ cursor: 'pointer' }}>
+        <ProfileIcon />
+      </div>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
       >
-        <PermIdentityIcon className="ml-96 bg-black" />
-      </button>
-      {isOpen && (
-        <div className="absolute right-0 mt-2 bg-white rounded-lg shadow-lg">
-          <ul className="py-2">
-            <li>
-              <button
-                className="block px-4  text-gray-800 hover:bg-gray-100"
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
-            </li>
-            <li>
-              <button
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                onClick={handleChangePassword}
-              >
-                Change Password
-              </button>
-            </li>
-          </ul>
+        <div className="p-4">
+          <p className="text-center text-xl">Logout</p>
+          <p className="text-center">Are you sure you want to logout?</p>
+          <div className="flex justify-center mt-4">
+            <Button variant="contained" color="primary" onClick={handleLogout}>
+              Logout
+            </Button>
+            <Button variant="outlined" color="primary" onClick={handleClose}>
+              Cancel
+            </Button>
+          </div>
         </div>
-      )}
+      </Popover>
     </div>
   );
 };

@@ -117,10 +117,10 @@ console.log("selected graph::::::",selectedGraph)
                 transform: "translateY(10%)",
               }}
             >
-              <div className="">
+              <div className="grid grid-cols-2 gap-4">
+              <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
               <Total />
               </div>
-              <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
             </div>
           )}
           {selectedGraph === "Apti" && (

@@ -5,12 +5,13 @@ import MyCarousel from "../global/Slider2";
 import Navigation from "../Nav/Navigation";
 import TopSection from "./TopSection";
 import Notifications from "./Notifications";
-
+import { UserContext } from "../../UserContext.jsx";
+import { Navigate, Link, useParams } from "react-router-dom";
 
 const Dashboard = () => {
   const [data1, setData1] = useState([]);
   const [latestDataDate, setLatestDataDate] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(true)
   const { loading, user, setUser } = useContext(UserContext);
   console.log("user:::::", user);
 
@@ -28,6 +29,7 @@ const Dashboard = () => {
       if (sortedData.length > 0) {
         setLatestDataDate(sortedData[0].Date);
       }
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +40,7 @@ const Dashboard = () => {
   }, []);
 
   // Check if the user is not logged in and loading is false
-  if (!user && !loading) {
+  if (!user && !loading && !isLoading) {
     // Redirect the user to the login page
     return <Navigate to={"/login"} />;
   }
@@ -53,23 +55,15 @@ const Dashboard = () => {
       .toLocaleString(undefined, options)
       .replace(/(\d+:\d+)(\s\w+)/, "$1$2");
   };
-  const handleLogout = () => {
-    console.log("Logout");
-  };
-
-  const handleChangePassword = () => {
-
-    console.log("Change Password");
-  };
-
+  if (isLoading) {
+    // Render a loading message or spinner while data is being fetched
+    return <div>Loading...</div>;
+  }
   return (
     <div className="w-full" style={{ backgroundColor: "white" }}>
-      <div className="col main pt-5 mt-3 container px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between">
-          <p className="lead mb-2 sm:mb-0">Welcome to your Dashboard</p>
-          <Navigation />
-          <Profile onLogout={handleLogout} onChangePassword={handleChangePassword} />
-        </div>
+      <div className="col main pt-5 mt-3 container">
+        <p className="lead d-none d-sm-block ">Welcome to your Dashboard</p>
+        <Navigation />
         <p className="flex flex-row-reverse text-2xl mr-5 my-2 font-bold">
           {formatCustomDate(latestDataDate)}
         </p>
@@ -87,7 +81,7 @@ const Dashboard = () => {
               </div>
               <div className="card-body">
                 <div className="carousel-wrapper">
-                  <MyCarousel />
+                  <MyCarousel isLoading={isLoading}/>
                 </div>
               </div>
             </div>

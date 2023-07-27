@@ -5,7 +5,6 @@ import RangeSlider from '../Slider/RangeSlider';
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-
 const MyCarousel = () => {
   const [testData, setTestData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,7 +29,7 @@ const MyCarousel = () => {
       <div className="carousel-inner">
         {loading ? (
           <div className="carousel-item active">
-            <div>Loading...</div>
+            {/* <div>Loading...</div> */}
           </div>
         ) : (
           testData.map((data, index) => (
@@ -44,14 +43,23 @@ const MyCarousel = () => {
           ))
         )}
       </div>
-     
-      <button className="carousel-control-prev my-10 mx-[-2rem] w-32" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span className="text-green-300"><NavigateBeforeIcon style={{fontSize:'3rem'}}/></span>
-      </button>
- 
-      <button className="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span className="text-green-300" > <NavigateNextIcon style={{fontSize:'3rem'}}/></span>
-      </button>
+
+      {/* Conditionally render carousel control buttons */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <button className="carousel-control-prev my-10 mx-[-2rem] w-32" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span className="text-green-300">
+              <NavigateBeforeIcon style={{ fontSize: '3rem' }} />
+            </span>
+          </button>
+
+          <button className="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span className="text-green-300" > <NavigateNextIcon style={{ fontSize: '3rem' }} /></span>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import Apti from './Apti'
 import Technical from './Technical'
 import NewAnalyticsReport from './NewAnalyticsReportTable';
 import Total from "./Total";
+import Leaderboard from "./Leaderboard";
 
 const NewAnal = () => {
   const [selectedGraph, setSelectedGraph] = useState("Total");
@@ -119,8 +120,8 @@ console.log("selected graph::::::",selectedGraph)
             >
               <div className="">
               <Total />
-              </div>
               <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
+              </div>
             </div>
           )}
           {selectedGraph === "Apti" && (
@@ -170,7 +171,9 @@ console.log("selected graph::::::",selectedGraph)
           )}
 
         </div>
+
       </div>
+     
     </div>
   );
 };

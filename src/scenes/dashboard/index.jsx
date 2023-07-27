@@ -5,6 +5,7 @@ import MyCarousel from "../global/Slider2";
 import Navigation from "../Nav/Navigation";
 import TopSection from "./TopSection";
 import Notifications from "./Notifications";
+import Profile from "../Nav/Profile";
 
 const Dashboard = () => {
   const [data1, setData1] = useState([]);
@@ -43,12 +44,23 @@ const Dashboard = () => {
       .toLocaleString(undefined, options)
       .replace(/(\d+:\d+)(\s\w+)/, "$1$2");
   };
+  const handleLogout = () => {
+    console.log("Logout");
+  };
+
+  const handleChangePassword = () => {
+
+    console.log("Change Password");
+  };
 
   return (
     <div className="w-full" style={{ backgroundColor: "white" }}>
-      <div className="col main pt-5 mt-3 container">
-        <p className="lead d-none d-sm-block ">Welcome to your Dashboard</p>
-        <Navigation />
+      <div className="col main pt-5 mt-3 container px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+          <p className="lead mb-2 sm:mb-0">Welcome to your Dashboard</p>
+          <Navigation />
+          <Profile onLogout={handleLogout} onChangePassword={handleChangePassword} />
+        </div>
         <p className="flex flex-row-reverse text-2xl mr-5 my-2 font-bold">
           {formatCustomDate(latestDataDate)}
         </p>

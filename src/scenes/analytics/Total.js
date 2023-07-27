@@ -6,6 +6,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, Title, Tooltip, Legend } 
 ChartJS.register(CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const options = {
+  maintainAspectRatio: false,
   indexAxis: 'x',
   responsive: true,
   plugins: {
@@ -87,7 +88,7 @@ const Total = () => {
   };
 
   return (
-    <div className='graph drop-shadow-2xl shadow-md' style={{ width: '100%', maxWidth: '500px', height: '280px', margin: '60px auto' }}>
+    <div className='graph ml-4 shadow-md ' style={{ width: '500px', height: '300px', maxWidth: '700px', margin: '60px 3rem', }}>
       {data1.length > 0 ? (
         <Bar data={getChartData()} options={options} />
       ) : (

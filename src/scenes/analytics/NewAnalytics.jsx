@@ -111,62 +111,63 @@ console.log("selected graph::::::",selectedGraph)
         <div>
          
           {selectedGraph === "Total" &&(
-            <div
+            <div className="flex items-center gap-10 shadow-md border ml-10"
               style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-              <div className="grid grid-cols-2 gap-4">
+              <div className="flex mt-[-1rem] py-8 px-3">
               <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
-              <Total />
 
-              </div>
+              </div >
+              <Total className="flex gap-20 ml-10 px-4"/>
             </div>
           )}
           {selectedGraph === "Apti" && (
-            <div
+            <div className="flex items-center gap-10 shadow-md border ml-10"
               style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-               <div className="">
-              <Apti />
-              </div>
+               <div className="flex mt-[-1rem] py-8 px-3">
               <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
+              </div>
+              <Apti className="flex gap-20 ml-10 px-4"/>
           
             </div>
           )}
           {selectedGraph === "Pdp" && (
-            <div
+            <div  className="flex items-center gap-10 shadow-md border ml-10"
               style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-               <div className="">
-              <Pdp />
-              </div>
+               <div className="flex mt-[-1rem] py-8 px-3">
               <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
+              </div>
           
+              <Pdp className="flex gap-20 ml-10 px-4"/>
             </div>
           )}
           {selectedGraph === "Technical" && (
-            <div
+            <div className="flex  items-center gap-10 shadow-md border ml-10"
               style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-               <div className="">
-              <Technical />
-              </div>
+               <div className="flex mt-[-1rem] py-8 px-3">
               <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
+           
+              </div>
+              <Technical className="flex gap-20 ml-10 px-4"/>
           
             </div>
           )}

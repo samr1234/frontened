@@ -10,6 +10,8 @@ const Login = () => {
   const [CRMID, setCRMID] = useState('');
   const { loading, user, setUser } = useContext(UserContext);
   const [redirect, setRedirect] = useState(false);
+
+  console.log("user from login:::",user)
   const Login =async(e)=>{
 
     e.preventDefault();
@@ -26,7 +28,7 @@ const Login = () => {
     
 
   }
-
+ 
   if (user) {
     // Redirect the user to the login page
     return <Navigate to={"/"} />;
@@ -55,7 +57,7 @@ const Login = () => {
   return (
     <div>
       {
-        !user &&   <section className="vh-90">
+          <section className="vh-90">
         <div className="container py-5 h-90">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">

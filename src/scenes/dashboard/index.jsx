@@ -5,7 +5,9 @@ import MyCarousel from "../global/Slider2";
 import Navigation from "../Nav/Navigation";
 import TopSection from "./TopSection";
 import Notifications from "./Notifications";
+import { UserContext } from "../../UserContext.jsx";
 
+import { Navigate, Link, useParams } from "react-router-dom";
 const Dashboard = () => {
   const [data1, setData1] = useState([]);
   const [latestDataDate, setLatestDataDate] = useState(null);
@@ -38,7 +40,7 @@ const Dashboard = () => {
   }, []);
 
   // Check if the user is not logged in and loading is false
-  if (!user && !loading && !isLoading) {
+  if (!user && !loading && !isLoading ) {
     // Redirect the user to the login page
     return <Navigate to={"/login"} />;
   }
@@ -59,10 +61,10 @@ const Dashboard = () => {
     <div className="w-full" style={{ backgroundColor: "white" }}>
       <div className="col main pt-5 mt-3 container px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between">
-          <p className="lead mb-2 sm:mb-0">Welcome to your Dashboard</p>
-          <Navigation />
+          <p className=" text-2xl mb-2 sm:mb-0">Welcome to your Dashboard</p>
         
         </div>
+          <Navigation className=""/>
 
         <p className="flex flex-row-reverse text-2xl mr-5 my-2 font-bold">
           {formatCustomDate(latestDataDate)}

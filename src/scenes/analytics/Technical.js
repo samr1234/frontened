@@ -4,6 +4,7 @@ import axios from 'axios';
 import { CategoryScale, LinearScale, Title, Tooltip, Legend } from 'chart.js/auto';
 
 const options = {
+  maintainAspectRatio: false,
   indexAxis: 'x',
   responsive: true,
   plugins: {
@@ -16,9 +17,7 @@ const options = {
       font: {
         size: 18,
         weight: 'bold',
-        
       },
-      
     },
   },
   scales: {
@@ -63,11 +62,12 @@ const Total = () => {
     if (!data1 || data1.length === 0) {
       return {}; // Return empty object if data1 is undefined or empty
     }
- 
+
     const labels = data1.map((item) => {
       const dateObject = new Date(item.Date);
       const formattedDate = dateObject.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-      return formattedDate;});
+      return formattedDate;
+    });
     const marks = data1.map((item) => item.Tech);
 
     return {
@@ -87,9 +87,9 @@ const Total = () => {
   };
 
   return (
-    <div className='graph' style={{ width: '100%', maxWidth: '500px', height: '280px', margin: '60px auto' }}>
+    <div className='graph ml-4 shadow-md ' style={{ width: '500px', height: '300px', maxWidth: '700px', margin: '60px 3rem', }}>
       {data1.length > 0 ? (
-        <Line data={getChartData()} options={options} />
+        <Line className="ml-10" data={getChartData()} options={options} />
       ) : (
         <div>Loading...</div>
       )}

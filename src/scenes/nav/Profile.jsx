@@ -26,8 +26,8 @@ const Profile = () => {
 
   return (
     <div>
-      <div onClick={handleOpen} style={{ cursor: 'pointer' }}>
-        <ProfileIcon />
+      <div onClick={handleOpen} style={{ cursor: 'pointer'}}>
+        <ProfileIcon className="text-2xl" />
       </div>
       <Popover
         id={id}

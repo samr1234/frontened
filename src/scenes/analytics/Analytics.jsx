@@ -4,7 +4,8 @@ import { Navigate, Link, useParams } from "react-router-dom";
 import NewAnalytics from './NewAnalytics'
 
 
-import { Navigate, Link, useParams } from "react-router-dom";
+
+
 const Analytics = () => {
 
 

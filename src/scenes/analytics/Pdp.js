@@ -4,6 +4,7 @@ import axios from 'axios';
 import { CategoryScale, LinearScale, Title, Tooltip, Legend } from 'chart.js/auto';
 
 const options = {
+  maintainAspectRatio: false,
   indexAxis: 'x',
   responsive: true,
   plugins: {
@@ -85,7 +86,7 @@ const Total = () => {
   };
 
   return (
-    <div className='graph drop-shadow-2xl hover:shadow-md' style={{ width: '100%', maxWidth: '500px', height: '280px', margin: '60px auto' }}>
+    <div className='graph ml-4 shadow-md ' style={{ width: '500px', height: '300px', maxWidth: '700px', margin: '60px 3rem', }}>
       {data1.length > 0 ? (
         <Line data={getChartData()} options={options} />
       ) : (

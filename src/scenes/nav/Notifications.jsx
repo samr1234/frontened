@@ -65,7 +65,7 @@ const Notifications = () => {
   return (
     <div>
       <div className="navbar-item" onClick={handleNotificationsClick}>
-        <NotificationsIcon className='ml-96 ' />
+        <NotificationsIcon className=' ' />
         {/* Show notification count on the bell icon */}
         {notificationCount > 0 && <span className="notification-count">{notificationCount}</span>}
       </div>

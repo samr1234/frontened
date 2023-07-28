@@ -14,11 +14,7 @@ const NewAnal = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [data, setData] = useState([]);
 
-
   useEffect(() => {
-
-
-
     const fetchDates = async () => {
       try {
         const url = 'http://localhost:3001/getSingleData';
@@ -29,6 +25,11 @@ const NewAnal = () => {
           return formattedDate;
         });
         setDates(datesData);
+
+        // Automatically select the first date from the datesData array
+        if (datesData.length > 0) {
+          setSelectedDate(datesData[0]);
+        }
       } catch (error) {
         console.error('Error fetching dates:', error);
       }
@@ -54,7 +55,7 @@ const NewAnal = () => {
         console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchData();
   }, [selectedDate]);
 
@@ -65,26 +66,27 @@ const NewAnal = () => {
   const handleGraphSelect = (graphType) => {
     setSelectedGraph(graphType);
   };
-console.log("selected graph::::::",selectedGraph)
-  return (
-    <div>
-      <select
-        className="ml-4"
-        style={{ marginTop: '3rem' }}
-        id="dateSelect"
-        value={selectedDate}
-        onChange={handleDateChange}
-      >
-        <option value="">Select a date</option>
-        {dates.map((date, index) => (
-          <option key={index} value={date}>
-            {date}
-          </option>
-        ))}
-      </select>
 
-      <div style={{ position: "absolute", top: "30px", right: "90px" }}>
-        
+  return (
+    <div className="flex flex-col">
+      <div className="flex items-center ml-10 mt-3">
+        <h1 className="font-semibold">Test Date :</h1>
+        <select
+          id="dateSelect"
+          value={selectedDate}
+          onChange={handleDateChange}
+          className="ml-1"
+        >
+          <option value="">Select a date</option>
+          {dates.map((date, index) => (
+            <option key={index} value={date}>
+              {date}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="ml-10 mt-3 flex items-center">
+        <h1 className="font-semibold mr-2">Select Subject:</h1>
         <Dropdown onSelect={handleGraphSelect}>
           <Dropdown.Toggle variant="white" id="graphSelectionDropdown">
             {selectedGraph}
@@ -100,82 +102,82 @@ console.log("selected graph::::::",selectedGraph)
               Pdp Marks
             </Dropdown.Item>
             <Dropdown.Item eventKey="Technical" active={selectedGraph === "Technical"}>
-             Technical Marks
+              Technical Marks
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
-
       <div>
-      
         <div>
-         
-          {selectedGraph === "Total" &&(
-            <div className="flex items-center gap-10 shadow-md border ml-10"
-              style={{
-                position: "relative",
-                top: "50%",
-                transform: "translateY(10%)",
-              }}
-            >
-              <div className="flex mt-[-1rem] py-8 px-3">
-              <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
 
-              </div >
-              <Total className="flex gap-20 ml-10 px-4"/>
+          <div className="border shadow-md mx-10  max-w-[1025px]">
+          <div className="text-3xl font-bold  text-center mt-4 text-red-500 ">Analysis</div>
+          {selectedGraph === "Total" && (
+            <div className="flex items-center py-5 shadow-green-300 gap-4   ml-10 max-w-screen-lg"
+            style={{
+              position: "relative",
+              top: "50%",
+              transform: "translateY(10%)",
+            }}
+            >
+              <div className="flex mt-[-4rem] py-8 px-3 ">
+                <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
+              </div>
+              <Total className="flex gap-20 ml-10  px-4" />
             </div>
           )}
+          {/* </div> */}
+        
+            
           {selectedGraph === "Apti" && (
-            <div className="flex items-center gap-10 shadow-md border ml-10"
-              style={{
+            <div className="flex items-center shadow-green-300 gap-4 py-5   ml-10 max-w-screen-lg"
+            style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-               <div className="flex mt-[-1rem] py-8 px-3">
-              <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
+              <div className="flex mt-[-4rem] py-8 px-3 ">
+                <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
               </div>
-              <Apti className="flex gap-20 ml-10 px-4"/>
-          
+              <Apti className="flex gap-20 ml-10 px-4" />
             </div>
           )}
+      
+       
           {selectedGraph === "Pdp" && (
-            <div  className="flex items-center gap-10 shadow-md border ml-10"
+            <div className="flex items-center shadow-green-300 gap-10 py-5  ml-10 max-w-screen-lg"
               style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-               <div className="flex mt-[-1rem] py-8 px-3">
-              <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
+              <div className="flex mt-[-4rem] py-8 px-3">
+                <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
               </div>
-          
-              <Pdp className="flex gap-20 ml-10 px-4"/>
+              <Pdp className="flex gap-20 ml-10 px-4" />
             </div>
           )}
+      
+          
           {selectedGraph === "Technical" && (
-            <div className="flex  items-center gap-10 shadow-md border ml-10"
+            <div className="flex items-center shadow-green-300 gap-10 py-5 ml-10 max-w-screen-lg"
               style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-               <div className="flex mt-[-1rem] py-8 px-3">
-              <NewAnalyticsReport data={data} selectedGraph={selectedGraph}/>
-           
+              <div className="flex mt-[-4rem] py-8 px-3">
+                <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
               </div>
-              <Technical className="flex gap-20 ml-10 px-4"/>
-          
+              <Technical className="flex gap-20 ml-10 px-4" />
             </div>
           )}
-
+       </div>
         </div>
-
       </div>
-     
     </div>
   );
 };

@@ -31,10 +31,13 @@ const Leaderboard = () => {
   };
 
   return (
-    <div className="container mx-auto mt-10" style={{ maxHeight: '500px' }}>
+    <div  className="flex items-center shadow-green-00  shadow-md border ml-10 mt-20   max-w-[1020px] drop-shadow-sm "
+             
+            >
+    <div className="container mx-auto mt-4 max-h-[700px]" >
       <div className="text-3xl font-bold text-red-500 mb-4 text-center">Leaderboard</div>
-      <div className="w-full overflow-auto">
-        <table className="w-full border-collapse border border-gray-500 table-fixed">
+      <div className="w-full ">
+        <table className="w-full border-collapse border border-gray-500 table-fixed ">
           <colgroup>
             <col style={{ width: '10%' }} />
             <col style={{ width: '20%' }} />
@@ -44,7 +47,7 @@ const Leaderboard = () => {
             <col style={{ width: '25%' }} />
           </colgroup>
           <thead>
-            <tr className="bg-gray-200 text-left">
+            <tr className="bg-gray-200 text-left ">
               <th className="py-2 px-4 border border-gray-500">Rank</th>
               <th className="py-2 px-4 border border-gray-500">Name</th>
               <th className="py-2 px-4 border border-gray-500">Average</th>
@@ -85,23 +88,25 @@ const Leaderboard = () => {
         </table>
       </div>
       {/* Pagination */}
-      <div className="flex justify-center my-4">
+      <div className="flex justify-end my-4   ">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="py-2 px-4 border border-gray-500 mr-2"
+          className="py-2 px-4 border text-white bg-gradient-to-r from-blue-500 to-purple-500 border-white mr-2 hover:bg-green-700   "
         >
           Previous
         </button>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={indexOfLastEntry >= leaderboardData.length}
-          className="py-2 px-4 border border-gray-500 ml-2"
+          className="py-2 px-4 border text-white border-white bg-gradient-to-r from-blue-500 to-purple-500  bg-blue-200 "
         >
           Next
         </button>
       </div>
     </div>
+    </div>
+
   );
 };
 

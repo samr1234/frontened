@@ -31,17 +31,20 @@ function NewAnalyticsReport({ data, selectedGraph }) {
   return (
     <div className="mainClass container w-96">
       <div className=" ">
-        {/* <p>ATTEMPTED ON</p>
-            <p>RANK</p>
-            <p>TOTAL TIME TAKEN</p>
-            <p>TOTAL TIME</p>
-            <p>CORRECT</p>
-            <p>INCORRECT</p>
-            <p>SKIPPED</p>
-            <p>MARKS OBTAINED</p> */}
-        {/* <p>MARKS Percentage</p> */}
+        {/* <p>Attempted On</p>
+            <p>Rank</p>
+            <p>Total Time Taken</p>
+            <p>Total Time</p>
+            <p>Correct</p>
+            <p>Incorrect</p>
+            <p>Skipped</p>
+            <p>Marks Obtained</p> */}
+        {/* <p>Marks Percentage</p> */}
 
-        <div className="hover:bg-green-100 rounded-xl">
+
+
+        <div className=" ">
+     
           {data.map((item) => {
             const dateObject = new Date(item.Date);
             const formattedDate = dateObject.toLocaleDateString("en-US", {
@@ -51,63 +54,64 @@ function NewAnalyticsReport({ data, selectedGraph }) {
             });
             return (
               <>
+              
                 {selectedGraph === "Total" && (
-                  <div className="text-2xl py-3 px-6">
-                    <p className="py-1">ATTEMPTED ON: {formattedDate}</p>
+                  <div className="text-xl py-3 px-6 mt-[-1rem] font-mono">
+                    <p className="py-1">Attempted On: {formattedDate}</p>
                     <hr />
-                    <p>RANK: {item.Rank}</p>
-                    <p>TOTAL TIME TAKEN: {item.TotalTimeTaken}</p>
-                    <p>TOTAL TIME: {item.TimeDuration}</p>
-                    <p>CORRECT: {item.TotalCorrect}</p>
-                    <p>INCORRECT: {item.Totalincorrect}</p>
-                    <p>SKIPPED: {item.Totalskipped}</p>
-                    <p>MARKS OBTAINED: {item.Total_Marks_obt}</p>
-                    <p>MARKS Percentage: {item.Overall_Prec.toFixed(2)}%</p>
+                    <p className="py-1">Rank:  {item.Rank}</p><hr />
+                    <p className="py-1">Total Time Taken: {item.TotalTimeTaken}</p><hr />
+                    <p className="py-1">TOTAL TIME: {item.TimeDuration}</p><hr />
+                    <p className="py-1">Correct: {item.TotalCorrect}</p><hr />
+                    <p className="py-1">Incorrect: {item.Totalincorrect}</p><hr />
+                    <p className="py-1">Skipped: {item.Totalskipped}</p><hr />
+                    <p className="py-1">Marks Obtained: {item.Total_Marks_obt}</p><hr />
+                    <p className="py-1">Marks Percentage: {item.Overall_Prec.toFixed(2)}%</p><hr />
                   </div>
                 )}
                 {selectedGraph === "Apti" && (
-                  <div className="text-2xl py-3 px-6">
-                    <p className="py-1">ATTEMPTED ON: {formattedDate}</p>
+                  <div className="text-xl py-3 px-6 mt-1 font-mono">
+                    <p className="py-1">Attempted On: {formattedDate}</p>
                     <hr />
-                    <p>RANK: {item.Rank}</p>
-                    <p>TOTAL TIME TAKEN: {item.TotalTimeTaken}</p>
-                    <p>TOTAL TIME: {item.TimeDuration}</p>
-                    <p>CORRECT: {item.Apticorrect}</p>
-                    <p>INCORRECT: {item.Totalincorrect}</p>
-                    <p>SKIPPED: {item.AptiSkipped}</p>
-                    <p>MARKS OBTAINED: {item.Apti}</p>
-                    <p>MARKS Percentage: {item.Apti_Prec.toFixed(2)}%</p>
+                    <p  className="py-1">Rank: {item.Rank}</p><hr />
+                    <p className="py-1">Total Time Taken: {item.TotalTimeTaken}</p><hr />
+                    <p className="py-1">TOTAL TIME: {item.TimeDuration}</p><hr />
+                    <p className="py-1">Correct: {item.Apticorrect}</p><hr />
+                    <p className="py-1">Incorrect: {item.Totalincorrect}</p><hr />
+                    <p className="py-1">Skipped: {item.AptiSkipped}</p><hr />
+                    <p className="py-1">Marks Obtained: {item.Apti}</p><hr />
+                    <p className="py-1">Marks Percentage: {item.Apti_Prec.toFixed(2)}%</p><hr />
                   </div>
                 )}
                 {selectedGraph === "Pdp" && (
-                  <div key={item._id} className=" text-2xl py-3 px-6  ">
-                    <p className="py-1">ATTEMPTED ON: {formattedDate}</p>
+                  <div key={item._id} className=" text-xl py-3 px-6 mt-3 font-mono ">
+                    <p className="py-1">Attempted On: {formattedDate}</p>
                     <hr />
-                    <p>RANK: {item.Rank}</p>
-                    <p>TOTAL TIME TAKEN: {item.Pdtime}</p>
-                    <p>TOTAL TIME: {item.TimeDuration}</p>
-                    <p>CORRECT: {item.PDcorrect}</p>
-                    <p>INCORRECT: {item.PDincorrect}</p>
-                    <p>SKIPPED: {item.Totalskipped}</p>
-                    <p>MARKS OBTAINED: {item.Total_Marks_obt}</p>
-                    <p>MARKS Percentage: {item.Tech_Prec?.toFixed(2)}%</p>
+                    <p  className="py-1">Rank: {item.Rank}</p><hr />
+                    <p className="py-1">Total Time Taken: {item.Pdtime}</p><hr />
+                    <p className="py-1">TOTAL TIME: {item.TimeDuration}</p><hr />
+                    <p className="py-1">Correct: {item.PDcorrect}</p><hr />
+                    <p className="py-1">Incorrect: {item.PDincorrect}</p><hr />
+                    <p className="py-1">Skipped: {item.Totalskipped}</p><hr />
+                    <p className="py-1">Marks Obtained: {item.Total_Marks_obt}</p><hr />
+                    <p className="py-1">Marks Percentage: {item.Tech_Prec?.toFixed(2)}%</p><hr />
                   </div>
                 )}
                 {selectedGraph === "Technical" && (
-                  <div className="text-2xl py-3 px-6">
+                  <div className="text-xl py-3 px-6 mt-3 font-mono">
                     <p className="py-1">
-                      ATTEMPTED ON:{"   "}
+                      Attempted On:{"   "}
                       {formattedDate}
                     </p>
                     <hr />
-                    <p>RANK:{item.Rank}</p>
-                    <p>TOTAL TIME TAKEN:{item.Techtime}</p>
-                    <p>TOTAL TIME:{item.TimeDuration}</p>
-                    <p>CORRECT:{item.techcorrect}</p>
-                    <p>INCORRECT:{item.techincorrect}</p>
-                    <p>SKIPPED:{item.TechSkipped}</p>
-                    <p>MARKS OBTAINED:{item.Tech}</p>
-                    <p>MARKS Percentage:{item.Tech_Prec?.toFixed(2)} %</p>
+                    <p className="py-1">Rank:{item.Rank}</p><hr />
+                    <p className="py-1">Total Time Taken:{item.Techtime}</p><hr />
+                    <p className="py-1">TOTAL TIME:{item.TimeDuration}</p><hr />
+                    <p className="py-1">Correct:{item.techcorrect}</p><hr />
+                    <p className="py-1">Incorrect:{item.techincorrect}</p><hr />
+                    <p className="py-1">Skipped:{item.TechSkipped}</p><hr />
+                    <p className="py-1">Marks Obtained:{item.Tech}</p><hr />
+                    <p className="py-1">Marks Percentage:{item.Tech_Prec?.toFixed(2)} %</p><hr />
                   </div>
                 )}
               </>

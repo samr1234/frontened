@@ -90,7 +90,7 @@ const Sidebar = () => {
           },
         }}
       >
-        <ProSidebar collapsed={isCollapsed}>
+        <ProSidebar collapsed={isCollapsed} className="h-screen fixed left-0 top-0">
           <Menu iconShape="square">
             <MenuItem
               onClick={() => setIsCollapsed(!isCollapsed)}

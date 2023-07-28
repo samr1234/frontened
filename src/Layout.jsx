@@ -8,7 +8,9 @@ const Layout = () => {
   
     <div className="flex">
 
+    {/* <Navigation className="block"/> */}
  <Sidebar />
+
  <Outlet className=""/>
     </div>
     </>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import ProfileIcon from '@mui/icons-material/AccountCircle'; // Replace 'Profile' with the correct icon name
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
-
+import { UserContext } from '../../UserContext';
 const Profile = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const { logout } = useContext(UserContext);
 
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,7 +19,12 @@ const Profile = () => {
     // Implement your logout logic here
     // For example, you can call an API to logout the user and then handle the logout action
     // After that, close the popover
+
+
     handleClose();
+    logout()
+
+
   };
 
   const open = Boolean(anchorEl);

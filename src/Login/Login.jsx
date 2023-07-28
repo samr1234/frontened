@@ -9,7 +9,6 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [CRMID, setCRMID] = useState('');
   const { loading, user, setUser } = useContext(UserContext);
-  const [redirect, setRedirect] = useState(false);
 
   console.log("user from login:::",user)
   const Login =async(e)=>{
@@ -57,8 +56,8 @@ const Login = () => {
   return (
     <div>
       {
-          <section className="vh-90">
-        <div className="container py-5 h-90">
+           <section className="vh-90">
+        <div className="container py-5 h-90  font-sans">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
               <div className="card" style={cardStyle}>

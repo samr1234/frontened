@@ -11,8 +11,8 @@ import { Navigate, Link, useParams } from "react-router-dom";
 const Dashboard = () => {
   const [data1, setData1] = useState([]);
   const [latestDataDate, setLatestDataDate] = useState(null);
-  const [isLoading, setIsLoading] = useState(true)
-  const { loading, user, setUser } = useContext(UserContext);
+  
+  const { loading, user, setUser,isLoading,setIsLoading } = useContext(UserContext);
   console.log("user:::::", user);
 
   const fetchData1 = async () => {
@@ -29,21 +29,43 @@ const Dashboard = () => {
       if (sortedData.length > 0) {
         setLatestDataDate(sortedData[0].Date);
       }
-      setIsLoading(false);
+      setIsLoading(false)
     } catch (error) {
       console.error(error);
     }
   };
 
+ 
+
   useEffect(() => {
     fetchData1();
+    // if(!user){
+    //   setIsLoading(false)
+    // }
   }, []);
 
-  // Check if the user is not logged in and loading is false
-  if (!user && !loading && !isLoading ) {
-    // Redirect the user to the login page
-    return <Navigate to={"/login"} />;
-  }
+
+
+// console.log()
+if (loading) {
+   return <Navigate to={"/login"} />;
+}
+
+// Check if the user is not logged in and redirect to the login page
+if (!user) {
+  return <Navigate to={"/login"} />;
+}
+
+
+  // if ((!user  && !loading && !isLoading) ) {
+  //   // Redirect the user to the login page
+  
+  //   return <Navigate to={"/login"} />;
+  // }
+  
+  
+
+ 
 
   const formatCustomDate = (dateString) => {
     const options = {

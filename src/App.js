@@ -22,7 +22,7 @@ function App() {
  <UserContextProvider>
       <Routes>
           <Route path='/login' element={<Login />} />
-        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path='/analytics' element={<Analytics />} />
           <Route path="/report" element={<Report />} />

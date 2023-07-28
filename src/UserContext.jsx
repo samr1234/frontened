@@ -32,6 +32,8 @@ export function UserContextProvider({ children }) {
     setUser(null);
   };
 
+  
+
   return (
     <UserContext.Provider value={{ user, setUser, loading, logout }}>
       {children}

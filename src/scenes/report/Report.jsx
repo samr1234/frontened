@@ -5,6 +5,8 @@ const Report = () => {
   return (
     <div>Report
       <Leaderboard/>
+      <Leaderboard/>
+      <Leaderboard/>
     </div>
   )
 }

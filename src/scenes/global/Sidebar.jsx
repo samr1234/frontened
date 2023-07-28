@@ -70,7 +70,8 @@ const Sidebar = () => {
   }, [location]);
 
   return (
-    <Box style={{ backgroundColor: "white" }}>
+ 
+    <Box className="" style={{ backgroundColor: "white" }}>
       <Box
         sx={{
           "& .pro-sidebar-inner": {

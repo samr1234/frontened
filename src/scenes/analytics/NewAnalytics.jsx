@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
+import { fetchData } from "./FetchDate";
 import axios from "axios";
 import Pdp from './Pdp';
 import Apti from './Apti'
@@ -8,10 +9,10 @@ import NewAnalyticsReport from './NewAnalyticsReportTable';
 import Total from "./Total";
 import Leaderboard from "./Leaderboard";
 
-const NewAnal = () => {
+const NewAnal = ({ selectedDate, setSelectedDate }) => {
   const [selectedGraph, setSelectedGraph] = useState("Total");
   const [dates, setDates] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
+  // const [selectedDate, setSelectedDate] = useState(null);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -37,27 +38,16 @@ const NewAnal = () => {
 
     fetchDates();
   }, []);
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (selectedDate) {
-          const url = 'http://localhost:3001/getDateData';
-          const response = await axios.get(url, {
-            params: {
-              date: selectedDate,
-            },
-          });
-          const data = response.data;
-          setData(data);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+    const fetchDataForSelectedDate = async () => {
+      if (selectedDate) {
+        const data = await fetchData(selectedDate);
+        setData(data);
       }
     };
-
-    fetchData();
+    fetchDataForSelectedDate();
   }, [selectedDate]);
+
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);

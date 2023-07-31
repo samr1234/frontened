@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { fetchData } from "./FetchDate";
 import { Bar } from 'react-chartjs-2';
 
-const GoalWise = () => {
+const GoalWise = ({ selectedDate }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = 'http://localhost:3001/getSingleData';
-      try {
-        const response = await axios.get(url);
-        setData(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+    const fetchDataForSelectedDate = async () => {
+      if (selectedDate) {
+        const data = await fetchData(selectedDate);
+        setData(data);
       }
     };
-
-    fetchData();
-  }, []);
+    fetchDataForSelectedDate();
+  }, [selectedDate]);
 
   // Function to extract specific data for the chart
   const getChartData = () => {

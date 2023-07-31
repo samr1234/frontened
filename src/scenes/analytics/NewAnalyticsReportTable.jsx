@@ -31,15 +31,6 @@ function NewAnalyticsReport({ data, selectedGraph }) {
   return (
     <div className="mainClass container w-96">
       <div className=" ">
-        {/* <p>Attempted On</p>
-            <p>Rank</p>
-            <p>Total Time Taken</p>
-            <p>Total Time</p>
-            <p>Correct</p>
-            <p>Incorrect</p>
-            <p>Skipped</p>
-            <p>Marks Obtained</p> */}
-        {/* <p>Marks Percentage</p> */}
 
 
 

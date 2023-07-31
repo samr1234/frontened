@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path='/analytics' element={<Analytics />} />
-          <Route path="/report" element={<Report />} />
+          {/* <Route path="/report" element={<Report />} /> */}
         </Route>
       </Routes>
 

@@ -3,15 +3,24 @@ import React,{useState} from 'react'
 const TopSection = ({data1}) => {
 
 
-    const [isHovered, setIsHovered] = useState(false);
+  const [isClassesAttendedHovered, setIsClassesAttendedHovered] = useState(false);
+  const [isTestAttemptedHovered, setIsTestAttemptedHovered] = useState(false);
 
-    const handleHover = () => {
-      setIsHovered(true);
-    };
+
+  const handleClassesAttendedHover = () => {
+    setIsClassesAttendedHovered(true);
+    setIsTestAttemptedHovered(false); // Ensure the other hover state is set to false
+  };
   
-    const handleMouseLeave = () => {
-      setIsHovered(false);
-    };
+  const handleTestAttemptedHover = () => {
+    setIsTestAttemptedHovered(true);
+    setIsClassesAttendedHovered(false); // Ensure the other hover state is set to false
+  };
+
+  const handleMouseLeave = () => {
+    setIsClassesAttendedHovered(false);
+    setIsTestAttemptedHovered(false);
+  };
 
   return (
     <div className="lg:text-lg sm:grid grid-cols-4 pb-3 mb-3 text-sm sm:w-full">
@@ -29,11 +38,11 @@ const TopSection = ({data1}) => {
                 <h6 className="text-uppercase">Classes Attended</h6>
                 <h1
                   className="display-4 cursor-pointer"
-                  onMouseOver={handleHover}
+                  onMouseOver={handleClassesAttendedHover}
                   onMouseLeave={handleMouseLeave}
                 >
                   {data1.length > 0
-                    ? isHovered
+                    ? isClassesAttendedHovered
                       ? `${data1[0].ClassesAttend}/${data1[0].TotalAttend}`
                       : data1[0].ClassesAttend
                     : 0}
@@ -71,7 +80,11 @@ const TopSection = ({data1}) => {
                   <i className="fa fa-cubes fa-4x" aria-hidden="true"></i>
                 </div>
                 <h6 className="text-uppercase">Test Attempted</h6>
-                <h1 className="display-4">{data1.length > 0 ? `x` : 0}</h1>
+                <h1 className="display-4 cursor-pointer" 
+                onMouseOver={handleTestAttemptedHover}
+                onMouseLeave={handleMouseLeave}
+              >
+              {data1.length > 0 ?  isTestAttemptedHovered ?`${data1[0].Testattempted}/${data1[0].TestShare}`:data1[0].Testattempted : 0}</h1>
               </div>
             </div>
           </div>

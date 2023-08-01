@@ -175,13 +175,13 @@ const Sidebar = () => {
                 setSelected={setSelected}
               />
 
-              <Item
+              {/* <Item
                 title="Report"
                 to="/report"
                 icon={<AnalyticsOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
-              />
+              /> */}
             </Box>
           </Menu>
         </ProSidebar>

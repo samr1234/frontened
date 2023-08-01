@@ -4,7 +4,7 @@ import './Range-slider.css';
 import RangeSlider from '../Slider/RangeSlider';
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-
+import Loading from '../../Loader.jsx'
 const MyCarousel = () => {
   const [testData, setTestData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ const MyCarousel = () => {
       <div className="carousel-inner">
         {loading ? (
           <div className="carousel-item active">
-            {/* <div>Loading...</div> */}
+            {/* <Loading/> */}
           </div>
         ) : (
           testData.map((data, index) => (

@@ -100,17 +100,17 @@ const NewAnal = ({ selectedDate, setSelectedDate }) => {
       <div>
         <div>
 
-          <div className="border shadow-md mx-10  max-w-[1025px]">
+          <div className=" sm:border  mx-10  max-w-[1500px]">
           <div className="text-3xl font-bold  text-center mt-4 text-red-500 ">Analysis</div>
           {selectedGraph === "Total" && (
-            <div className="flex items-center py-5 shadow-green-300 gap-4   ml-10 max-w-screen-lg"
+            <div className="md:flex sm:items-center sm:gap-4 py-5 shadow-green-300    ml-10 max-w-screen-lg"
             style={{
               position: "relative",
               top: "50%",
               transform: "translateY(10%)",
             }}
             >
-              <div className="flex mt-[-4rem] py-8 px-3 ">
+              <div className="flex mt-[-4rem]  py-8 px-3 ">
                 <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
               </div>
               <Total className="flex gap-20 ml-10  px-4" />
@@ -136,17 +136,17 @@ const NewAnal = ({ selectedDate, setSelectedDate }) => {
       
        
           {selectedGraph === "Pdp" && (
-            <div className="flex items-center shadow-green-300 gap-10 py-5  ml-10 max-w-screen-lg"
+            <div className="sm:flex :items-center shadow-green-300 gap-10 py-5  ml-10 max-w-screen-lg"
               style={{
                 position: "relative",
                 top: "50%",
                 transform: "translateY(10%)",
               }}
             >
-              <div className="flex mt-[-4rem] py-8 px-3">
+              <div className="sm:flex mt-[-4rem] py-8 px-3">
                 <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
               </div>
-              <Pdp className="flex gap-20 ml-10 px-4" />
+              <Pdp className="sm:flex gap-20 ml-10 px-4" />
             </div>
           )}
       

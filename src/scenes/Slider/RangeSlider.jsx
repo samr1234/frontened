@@ -77,7 +77,7 @@ const RangeSlider = ({ data }) => {
           </label>
           <div>
             <Slider
-              value={data.Tech_Prec}
+              value={data.Tech_Prec?.toFixed(2)}
               max={100}
               valueLabelDisplay="auto"
               aria-label={`Technical - ${formatPercentage(data.Tech_Prec)}%`}
@@ -91,7 +91,7 @@ const RangeSlider = ({ data }) => {
           <label htmlFor={`rangeSlider-${data.id}-2`}>Aptitude</label>
           <div>
             <Slider
-              value={data.Apti_Prec}
+              value={data.Apti_Prec.toFixed(2)}
               max={100}
               valueLabelDisplay="auto"
               aria-label={`Aptitude - ${formatPercentage(data.Apti_Prec)}%`}
@@ -103,7 +103,7 @@ const RangeSlider = ({ data }) => {
           <label htmlFor={`rangeSlider-${data.id}-3`}>English</label>
           <div>
             <Slider
-              value={data.English_Prec}
+              value={data.English_Prec.toFixed(2)}
               max={100}
               valueLabelDisplay="auto"
               aria-label={`English - ${formatPercentage(data.English_Prec)}%`}

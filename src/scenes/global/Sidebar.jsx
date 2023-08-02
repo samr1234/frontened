@@ -136,18 +136,20 @@ const Sidebar = () => {
                 <Box textAlign="center" className="mt-3">
                   <Typography
                     variant="h2"
-                    fontWeight="bold"
-                    sx={{ m: "10px 0 0 0" }}
-                    fontSize={"20px"}
-                    style={{ color: "rgb(120, 144, 156)",fontFamily: 'sans-serif' }}
                     
+                    sx={{ m: "10px 0 0 0" }}
+                    fontSize={"24px"}
+                    
+                    className="font-mono cursor-pointer font-extrabold text-red-500"
                   >
                     {data1?.studentId?.name}
                   </Typography>
                   <Typography
                     variant="h5"
                     fontSize={"19px"}
-                    style={{ color: "rgb(120, 144, 156)" }}
+                    // style={{ color: "rgb(120, 144, 156)" }}
+                    className="text-gray-500"
+
                   >
                     {data1?.studentId?.course}
                   </Typography>

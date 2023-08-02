@@ -68,7 +68,7 @@ const NewAnal = ({ selectedDate, setSelectedDate }) => {
           className="ml-1"
         >
           <option value="">Select a date</option>
-          {dates.map((date, index) => (
+          {dates.map((date,index) => (
             <option key={index} value={date}>
               {date}
             </option>
@@ -100,20 +100,22 @@ const NewAnal = ({ selectedDate, setSelectedDate }) => {
       <div>
         <div>
 
-          <div className=" sm:border  mx-10  max-w-[1500px]">
+          <div className=" sm:border  mx-10  min-w-[3px] max-w-[1500px]">
           <div className="text-3xl font-bold  text-center mt-4 text-red-500 ">Analysis</div>
           {selectedGraph === "Total" && (
-            <div className="md:flex sm:items-center sm:gap-4 py-5 shadow-green-300    ml-10 max-w-screen-lg"
+            <div className="xs:flex xs:flex-col lg:flex items-center justify-center sm:gap-4 py-5 shadow-green-300 mx-auto my-auto"
             style={{
               position: "relative",
               top: "50%",
               transform: "translateY(10%)",
             }}
             >
-              <div className="flex mt-[-4rem]  py-8 px-3 ">
+              <div className="flex mt-[-4rem] py-8 px-3">
                 <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
               </div>
-              <Total className="flex gap-20 ml-10  px-4" />
+            <div className="flex justify-normal">
+              <Total className="" />
+              </div>
             </div>
           )}
           {/* </div> */}

@@ -34,7 +34,7 @@ function NewAnalyticsReport({ data, selectedGraph }) {
 
 
 
-        <div className=" ">
+        <div className="w-full">
      
           {data.map((item) => {
             const dateObject = new Date(item.Date);
@@ -47,7 +47,7 @@ function NewAnalyticsReport({ data, selectedGraph }) {
               <>
               
                 {selectedGraph === "Total" && (
-                  <div className="text-xl py-3 px-6 mt-[-1rem] font-mono">
+                  <div className="text-xs  lg:text-xl py-3 px-6 mt-[-1rem] font-mono">
                     <p className="py-1">Attempted On: {formattedDate}</p>
                     <hr />
                     <p className="py-1">Rank:  {item.Rank}</p><hr />

@@ -5,7 +5,42 @@ import { Bar } from 'react-chartjs-2';
 
 const GoalWise = ({ selectedDate }) => {
   const [data, setData] = useState(null);
-
+  const options = {
+    maintainAspectRatio: true,
+    indexAxis: 'x',
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+      },
+      title: {
+        display: true,
+        text: 'Aptitude Marks',
+        font: {
+          size: 18,
+          weight: 'bold',
+        },
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+          color: 'rgba(0, 0, 0, 0.1)',
+        },
+        ticks: {
+          beginAtZero: true,
+          stepSize: 5,
+        },
+      },
+    },
+  };
+  
   useEffect(() => {
     const fetchDataForSelectedDate = async () => {
       if (selectedDate) {
@@ -60,7 +95,7 @@ const GoalWise = ({ selectedDate }) => {
               <div className=" items-center shadow-green-300  shadow-md ml-10 mt-20   drop-shadow-sm w-[1020px] h-[600px] border border-gray-300 p-20">
       <h2 className=' ml-[60px] mt-[-40px] text-3xl font-bold text-red-500 mb-4 text-center '>Goal Wise Data</h2>
       
-        {data ? <Bar data={getChartData()} /> : <div>Loading...</div>}
+        {data ? <Bar options={options} data={getChartData()} /> : <div>Loading...</div>}
       </div>
     </div>
    

@@ -16,7 +16,7 @@ const Dashboard = () => {
   console.log("user:::::", user);
 
   const fetchData1 = async () => {
-    const url = "http://localhost:3001/getSingleData";
+    const url = "/getSingleData";
 
     try {
       const response = await axios.get(url);
@@ -24,6 +24,7 @@ const Dashboard = () => {
         (a, b) => new Date(b.Date) - new Date(a.Date)
       );
       setData1(sortedData);
+      console.log("Data1:::::::",data1)
 
       // Get the latest date from the fetched data and set it to the state
       if (sortedData.length > 0) {

@@ -113,9 +113,9 @@ const NewAnal = ({ selectedDate, setSelectedDate }) => {
               <div className="flex mt-[-4rem] py-8 px-3">
                 <NewAnalyticsReport data={data} selectedGraph={selectedGraph} />
               </div>
-            <div className="flex justify-normal">
+            
               <Total className="" />
-              </div>
+            
             </div>
           )}
           {/* </div> */}

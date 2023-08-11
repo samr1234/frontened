@@ -101,7 +101,7 @@ const TopSection = ({data1}) => {
                 </div>
                 <h6 className="text-uppercase">Batch Name</h6>
                 <h2 className="display-4">
-                  {data1.length > 0 ? data1[0].studentId.batch : 0}
+                  {data1.length > 0 ? data1[0].studentId?.batch : 0}
                 </h2>
               </div>
             </div>

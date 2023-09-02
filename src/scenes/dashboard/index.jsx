@@ -11,11 +11,13 @@ import { Navigate, Link, useParams } from "react-router-dom";
 const Dashboard = () => {
   const [data1, setData1] = useState([]);
   const [latestDataDate, setLatestDataDate] = useState(null);
-  
+
   const { loading, user, setUser,isLoading,setIsLoading } = useContext(UserContext);
   console.log("user:::::", user);
 
+
   const fetchData1 = async () => {
+ 
     const url = "/getSingleData";
 
     try {

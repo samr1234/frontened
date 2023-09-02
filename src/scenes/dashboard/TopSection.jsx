@@ -83,7 +83,7 @@ const TopSection = ({data1}) => {
                 <h1 className="display-4 cursor-pointer" 
                 onMouseOver={handleTestAttemptedHover}
                 onMouseLeave={handleMouseLeave}
-              >
+              > 
               {data1.length > 0 ?  isTestAttemptedHovered ?`${data1[0].Testattempted}/${data1[0].TestShare}`:data1[0].Testattempted : 0}</h1>
               </div>
             </div>
@@ -93,7 +93,7 @@ const TopSection = ({data1}) => {
               <div
                 className="card-body bg-info rounded"
                 style={{
-                  background: "linear-gradient(to right, #007bff, #090979)",
+                  background: "linear-gradient(to right, 279EFF, A2678A)",
                 }}
               >
                 <div className="rotate">

@@ -64,9 +64,9 @@ function NewAnalyticsReport({ data, selectedGraph }) {
                   <div className="text-xl py-3 px-6 mt-1 font-mono">
                     <p className="py-1">Attempted On: {formattedDate}</p>
                     <hr />
-                    <p  className="py-1">Rank: {item.Rank}</p><hr />
+                    <p className="py-1">Rank: {item.Rank}</p><hr />
                     <p className="py-1">Total Time Taken: {item.TotalTimeTaken}</p><hr />
-                    <p className="py-1">TOTAL TIME: {item.TimeDuration}</p><hr />
+                    <p className="py-1">TOTALTIME: {item.TimeDuration}</p><hr />
                     <p className="py-1">Correct: {item.Apticorrect}</p><hr />
                     <p className="py-1">Incorrect: {item.Totalincorrect}</p><hr />
                     <p className="py-1">Skipped: {item.AptiSkipped}</p><hr />

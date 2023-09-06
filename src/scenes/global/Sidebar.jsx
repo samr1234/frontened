@@ -30,7 +30,7 @@ const Sidebar = () => {
   const [data1,setData1] = useState()
   useEffect(() => {
     const fetchData = async() => {
-      const url = 'http://localhost:3001/getSingleData';
+      const url = '/getSingleData';
 
    let data = await axios.get(url);
 

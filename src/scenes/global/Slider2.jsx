@@ -11,7 +11,7 @@ const MyCarousel = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/getSingleData");
+      const response = await axios.get("/getSingleData");
       setTestData(response.data);
       setLoading(false);
     } catch (error) {

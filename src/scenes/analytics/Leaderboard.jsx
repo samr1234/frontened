@@ -9,7 +9,7 @@ const Leaderboard = () => {
   useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
-        const url = 'http://localhost:3001/getCourseData';
+        const url = '/getCourseData';
         const response = await axios.get(url);
         setLeaderboardData(response.data);
       } catch (error) {

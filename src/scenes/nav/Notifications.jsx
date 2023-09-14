@@ -14,7 +14,7 @@ const Notifications = () => {
 
   const handleNotificationsClick = async () => {
     try {
-      const response = await axios.get('http://localhost:3002/notifications');
+      const response = await axios.get('/');
       const sortedNotifications = response.data.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
       setNotifications(sortedNotifications);
 

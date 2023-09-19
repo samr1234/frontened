@@ -18,7 +18,7 @@ const Notifications = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3003/data");
+      const response = await axios.get("/data");
       const sortedNotifications = response.data.sort(
         (a, b) => new Date(a.date) - new Date(b.date)
       );
@@ -59,7 +59,7 @@ const Notifications = () => {
   };
 
   const downloadPDF = async (filename) => {
-    const fileURL = `http://localhost:3003/uploads/${filename}`;
+    const fileURL = `/uploads/${filename}`;
 
     try {
       const response = await axios.get(fileURL, {
@@ -79,7 +79,7 @@ const Notifications = () => {
   };
 
   const openPDF = (filename) => {
-    window.open(`http://localhost:3003/uploads/${filename}`, "_blank");
+    window.open(`/uploads/${filename}`, "_blank");
   };
 
   const showNextNotifications = () => {

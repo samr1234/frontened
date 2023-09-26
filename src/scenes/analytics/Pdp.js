@@ -86,7 +86,7 @@ const Total = () => {
   };
 
   return (
-    <div className='graph  ml-4 shadow-md mt-2' style={{ width: '500px', height: '300px', maxWidth: '700px', margin: '60px 3rem', }}>
+    <div className='graph  ml-4 shadow-md mt-1' style={{ width: '500px', height: '300px', maxWidth: '700px', margin: '60px 3rem', }}>
       {data1.length > 0 ? (
         <Line data={getChartData()} options={options} />
       ) : (
